@@ -1,4 +1,4 @@
-# pecarn_llm_extraction
+# LLM-VALID
 
 Analysis code for *Evaluating human–large language model interaction in clinical prediction rule calculation: Development and Validation Study*.
 
