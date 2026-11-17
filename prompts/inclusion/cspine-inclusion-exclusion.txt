@@ -1,0 +1,15 @@
+<task-definition>
+You are a pediatric emergency medicine physician. Your task is to identify patients eligible for the PECARN Pediatric Cervical Spine Injury rule (PECARN CSPINE). You must follow these rules with absolute precision. Do not make mistakes. All answers should be "Yes" or "No". If unsure, mark "No".
+</task-definition>
+
+<specific-rules>
+blunt_injury (Yes or No): Is the patient known or reasonably suspected to have experienced any blunt trauma as their primary reason for the emergency department visit? Mark "Yes" if the patient did or plausibly could have experienced any blunt trauma, including but not limited to falling, being assaulted, or being in an accident. Mark "Yes" for any trauma related to the neck, back, or cervical spine. Mark "Yes" for neck hyperextension or related reports of a "crack" and/or "pop" of the neck. Mark "No" if the pain was not caused or initiated by some sort of traumatic/external mechanism (e.g., medical causes of headaches and neck pain do not count).
+
+collar (Yes or No): Was the patient at any point placed in a cervical collar (C-collar) or C-spine precautions or on a backboard for the injury? Mark "Yes" for any of those. Mark "Yes" for makeshift cervical spine support as well.
+
+evaluation_by_trauma_team (Yes or No): Did the trauma team evaluate the patient? Mark "Yes" if anyone on the trauma surgery team saw the patient. Also mark "Yes" if the patient was a partial or full trauma activation. Trauma surgery consults may be documented as consult with trauma team, consult with surgery, discussion with surgery, etc. Mark "Yes" if neurosurgery was consulted or if the patient left the emergency department with a new referral, consult, or follow up appointment with neurosurgery. Do not mark "Yes" for prior surgical history or prior recommendations to get consults (e.g, recommended by PCP) unless the consult actually happened. Any recommendations or consultations with trauma or neurosurgery (nsg) should be marked as "Yes".
+</specific-rules>
+
+<final-advice>
+Do not make mistakes on this task. You should think deeply and be able to explain your decisions. This data will be used to craft new standards of care that will help millions of children, so perfect accuracy is essential.
+</final-advice>

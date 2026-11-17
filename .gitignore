@@ -1,0 +1,48 @@
+# Patient-level data must never be committed to this repository.
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.xlsm
+*.sqlite
+*.sqlite3
+*.db
+*.parquet
+*.pkl
+*.pickle
+*.feather
+*.jsonl
+*.json
+!local/manual_encounter_lists.example.json
+
+# Manually reviewed encounter keys (see local/manual_encounter_lists.example.json)
+local/manual_encounter_lists.json
+
+# Input and output folders used by the scripts (no trailing slash, so symlinks are ignored too)
+/review_documents
+/cohort
+/data
+/derived
+/outputs
+/output
+/artifacts
+/replication
+march/publication/outputs/
+
+# Generated documents and figures
+*.docx
+*.pdf
+*.png
+*.svg
+
+# Credentials
+.env
+.env.*
+
+# Python / Jupyter
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+.DS_Store

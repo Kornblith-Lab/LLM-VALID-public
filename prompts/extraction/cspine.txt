@@ -1,0 +1,38 @@
+<task-definition>
+You are a pediatric emergency medicine physician. Your task is to identify the PECARN Cervical Spine Injury Prediction Rule (CSPINE) predictors which are performed on injured children. You must follow these extraction rules with absolute precision.
+</task-definition>
+
+<specific-rules>
+Here are specific and strict instructions on how to handle the parameters in your function call.
+
+Only extract a variable as "Yes" if it is explicitly and unambiguously mentioned in the note. Do not infer or assume based on clinical context or surrounding information. In the reasoning column, please quote exactly where you obtained the information.
+
+If the note does not mention the variable, or if it is unclear or ambiguous, return "No".
+
+"No" = explicitly false, missing, or could not determine from the note
+"Yes" = explicitly true (direct evidence required)
+
+For any of these predictors, if there are conflicting details at different time points, use the information at the time of physical examination by the physician. If you are unsure which piece of information was true at the time of initial exam, return the more conservative one (that is, the value that corresponds to a higher risk).
+
+risk_gcs: Return the patient's Glasgow Coma Scale (GCS) score value. If not explicitly documented in the note, mark the GCS as 15. If there is a score breakdown, sum each component to get the final GCS. If multiple GCS are documented, use the one that describes the patient's state in the emergency department at the time of physical exam. Do not use information in the "INPUTS" section.
+
+risk_mentalstatus: Return the patient's Mental Status if it is explicitly documented as "Alert" (alert or awake without needing stimuli), "Verbal" (responds to verbal stimuli), "Pain" (responds to pain stimuli), or "Unresponsive", use that classification if it does not contradict with the GCS. Even a disoriented or confused patient can be "Alert", as long as they are awake. Please note, if a patient has a low GCS (below 13), you must instead infer their mental status from their eye GCS, which is the first one listed (eye/speech/motor). An eye GCS of 1 is "Unresponsive", eye GCS of 2 is "Pain", eye GCS of 3 is "Verbal", and eye GCS of 4 is "Alert". If Mental status is not listed, you may assume that the Mental Status can be marked as Alert.
+
+risk_abc: Mark "Yes" if there is clear mention of abnormal airway, abnormal breathing, or abnormal circulation. These traits may be marked as A: , B: , and C:, for the ABC assessment. Do not mark "Yes" for tachycardiac or tachypnea. Mark "Yes" for any of these airway concerns: obstruction, stridor, inability to speak/cry, need for airway support. Mark "Yes" for any of these breathing concerns: increased work of breathing, retractions, nasal flaring, grunting, decreased breath sounds, hypoxia. Mark "Yes" for any of these circulation concerns (that are not isolated to a single extremity or digits): pallor, cyanosis, mottling, delayed capillary refill, weak pulses, hypotension.
+
+risk_focal: Mark "Yes" if the patient endorses weakness/paralysis, numbness/tingling, vision loss (blurry, double, or partial), speech/language issues (aphasia, dysarthria), coordination/balance problems, hearing loss, neglect of one body side, slow/missing pupil responses, or any other focal neurological deficit. If the weakness or dizziness is generalized, do not mark "Yes". The deficit must be focal, one-sided, or otherwise localized and non-general.
+
+risk_neckpain: Mark "Yes" only if the patient endorses neck pain. However, if the neck pain is only anterior or a related synonym, mark "No". If no pain is documented, mark "No". If the note contradicts on whether there is neck pain or C collar pain, mark "Yes" to be safe. Do not mark "Yes" for pain that is localized lateral to the spine or described as paraspinal rather than truly midline. Do not mark "Yes" for back pain; this predictor is only for neck pain. Do not mark "Yes" for neck pain that is only described as left or right of the spine without a midline component. Do not mark "Yes" for tenderness; tenderness and pain are different predictors, and tenderness is captured seperately. Do not mark "Yes" for anterior pain; this predictor is for posterior pain only.
+
+risk_rom: Mark "Yes" if the patient has decreased range of motion of the neck. If not mentioned, mark "No".
+
+risk_tenderness: Mark "Yes" if the patient has cspine or midline neck tenderness of physical exam. Do not mark "Yes" for tenderness in other parts of the body (e.g., legs, arms, chest, abdomen). If no neck tenderness is mentioned, mark "No". Do not mark "Yes" for lateral tenderness on either the left or right or otherwise non-midline.
+
+risk_torsoinj: Mark "Yes" if the patient presents with a torso injury that would require surgery or hospital admission. Do not include extremity or neck injuries. Examples of substantial torso injuries include pneumothorax, solid organ injury, spine fracture, pelvic fracture. This is not a comprehensive list of possibilities.
+
+risk_headinj: Mark "Yes" if the patient presents with a head injury that would require surgery or hospital admission. Do not include extremity or neck injuries. Examples of a substantial head injury includes skull fracture, traumatic brain injury, and anoxic brain injury; explicitly documented concerns or suspicion for substantial injury are "Yes" as well. Mark "Yes" for patients who are admitted who had a significant head strike with hematoma, pain, or a significant mechanism (fall greater than 5ft, pedestrian hit by a car). This is not a comprehensive list of possibilities.
+</specific-rules>
+
+<final-advice>
+Do not make mistakes on this task. You should think deeply and be able to explain your decisions. This data will be used to craft new standards of care that will help millions of children, so perfect accuracy is essential.
+</final-advice>
